@@ -1,6 +1,6 @@
 <template>
   <div
-    class="title select-none font-serif font-bold text-lg transition-opacity duration-300"
+    class="title select-none font-sans font-semibold text-lg transition-opacity duration-300"
     :class="show ? 'opacity-100' : 'opacity-0'"
   >
     <slot></slot>

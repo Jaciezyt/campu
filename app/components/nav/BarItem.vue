@@ -1,13 +1,17 @@
 <template>
   <li
-    class="item inline-flex justify-center items-center font-semibold ml-4"
+    class="item inline-flex justify-center items-center font-semibold text-muted dark:text-toned ml-4"
     :class="show ? 'opacity-100' : 'opacity-0'"
     :style="{ '--border-width': borderWidth }"
     :index="index"
     @mouseover="handleMouseOver"
     @mouseleave="handleMouseLeave"
   >
-    <NuxtLink :to="to" class="w-full h-full inline-flex items-center" :target="target">
+    <NuxtLink
+      :to="to"
+      class="w-full h-full inline-flex items-center"
+      :target="target"
+    >
       <slot />
     </NuxtLink>
   </li>
@@ -39,10 +43,12 @@ const handleMouseLeave = () => {
   font-size: 1.05rem;
   margin-top: 1px !important;
   padding: 0 10px;
-  color: rgb(var(--color-gray-600));
   position: relative;
   cursor: pointer;
-  transition: border-bottom 0.4s ease-in-out, color 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition:
+    border-bottom 0.4s ease-in-out,
+    color 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
 }
 
 .item::after {
