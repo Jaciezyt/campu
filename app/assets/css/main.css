@@ -11,6 +11,12 @@
   }
 }
 
+@custom-variant max-xs {
+  @media (max-width: 32rem) {
+    @slot;
+  }
+}
+
 @theme static {
   --font-sans: Rubik, "Noto Sans", "Noto Sans SC", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   --font-serif: "DM Serif", "Noto Serif SC", "Noto Serif JP", Georgia, Cambria, "Times New Roman", Times, serif;
@@ -67,11 +73,6 @@
     @apply font-bold;
   }
 
-  code {
-    @apply font-mono;
-    font-size: 0.9em;
-  }
-
   ul {
     @apply list-disc;
   }
@@ -96,10 +97,16 @@
     @apply text-gray-700;
   }
 
+  code {
+    @apply font-mono;
+    font-size: 0.9em;
+  }
+
   :not(pre) > code {
     padding: 0.2em 0.35em;
     margin: 0 2px;
-    border-radius: 3px;
+    border-radius: 5px;
+    border: 1px solid var(--ui-border);
     background-color: var(--ui-bg-muted);
   }
 
