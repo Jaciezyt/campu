@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { updateHitokoto } from "~/utils";
+const state = useStateStore();
 
 // setInterval(updateHitokoto, 5 * 60 * 1000)
-const hitokoto = updateHitokoto();
+updateHitokoto();
 
 const documentWidth = ref(0);
 onMounted(() => {
@@ -18,10 +18,10 @@ const copyright = `&copy; Jacie &nbsp;${new Date().getFullYear()}`;
       <slot name="default">
         <UPopover mode="hover" :content="{ side: documentWidth <= 640 ? 'bottom' : 'right' }">
           <span class="text-[16px]">
-            {{ hitokoto.hitokoto }}
+            {{ state.hitokoto.hitokoto }}
           </span>
           <template #content>
-            <div class="px-3 py-2 text-sm">——{{ hitokoto.from }}</div>
+            <div class="px-3 py-2 text-sm">——{{ state.hitokoto.from }}</div>
           </template>
         </UPopover>
       </slot>
