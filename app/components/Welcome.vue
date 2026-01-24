@@ -2,7 +2,7 @@
   <div class="background" ref="body">
     <div class="hello table-cell max-sm:hidden">
       <h1>{{ vars.welcome.title }}</h1>
-      <div class="quote mx-auto my-6 px-5 py-3 text-2xl text-center select-none">
+      <div class="quote mx-auto my-6 px-5 pb-3 pt-5 text-2xl text-center select-none">
         <Icon class="align-text-top" name="ic:round-format-quote" style="transform: rotate(180deg)" />
         <span>{{ quote }}</span>
         <Icon class="align-text-top" name="ic:round-format-quote" />
@@ -98,7 +98,7 @@ onMounted(() => {
 }
 
 .quote {
-  border-radius: 10px;
+  border-radius: 15px;
   width: fit-content;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.4);
