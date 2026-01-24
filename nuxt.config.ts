@@ -35,5 +35,60 @@ export default defineNuxtConfig({
       prefix: 'my',
       dir: './app/assets/icon'
     }]
-  }
+  },
+
+  content: {
+    build: {
+      markdown: {
+        remarkPlugins: {
+          'remark-math': {
+            src: 'remark-math',
+            options: {
+              singleDollarTextMath: true,
+            },
+          },
+        },
+        rehypePlugins: {
+          'rehype-katex': {
+            src: 'rehype-katex',
+            options: {
+              tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+              },
+            },
+          },
+        },
+
+        highlight: {
+          theme: {
+            default: "one-light",
+            dark: "one-dark-pro",
+            sepia: "monokai",
+          },
+          langs: [
+            "json",
+            "js",
+            "ts",
+            "html",
+            "css",
+            "vue",
+            "shell",
+            "mdc",
+            "md",
+            "yaml",
+            "c",
+            "cpp",
+            "java",
+            "kotlin",
+            "cmake",
+            "go",
+            "lua",
+            "python",
+            "bash",
+          ],
+        },
+      },
+    },
+  },
 })

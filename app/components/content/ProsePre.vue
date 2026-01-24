@@ -7,8 +7,8 @@
           <span class="flex-1 pl-4">{{ i }}</span>
         </div>
       </div>
-      <pre v-if="lineCount == 1" ref="pre" class="p-0 ml-6 flex-auto" :class="$props.class"><slot /></pre>
-      <pre v-else ref="pre" class="p-0 m-0 flex-auto text-left overflow-x-auto myscroll" :class="$props.class"><slot /></pre>
+      <pre v-if="lineCount == 1" ref="pre" class="px-0 pb-[0.8em] ml-6 flex-auto" :class="$props.class"><slot /></pre>
+      <pre v-else ref="pre" class="px-0 pb-[0.8em] m-0 flex-auto text-left overflow-x-auto myscroll" :class="$props.class"><slot /></pre>
       <div class="info">
         <UButton v-if="lineCount > 1" class="transition-all duration-200 ease-in-out" :class="showButton || showCheck ? 'opacity-100' : 'opacity-0'" variant="soft" color="neutral" size="lg" square @click="onClick" @mouseleave="onMouseLeave">
           <Icon name="ic:round-content-copy" size="1.2rem" v-show="!showCheck" />
@@ -86,11 +86,16 @@ onMounted(() => {
 <style scoped>
 .code-block {
   background-color: var(--ui-bg-muted);
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--ui-border);
   margin: 1em 0;
-  padding: 0.6em 0;
+  padding-top: 0.8em;
   overflow: auto;
   position: relative;
+}
+
+.line-no.highlight{
+  border: 5px solid rgb(var(--color-primary-500));
 }
 
 .highlight .line-mark {
@@ -140,7 +145,4 @@ onMounted(() => {
   min-width: 100%;
 }
 
-.line span {
-  padding-right: 0.4em;
-}
 </style>
