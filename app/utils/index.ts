@@ -1,6 +1,6 @@
 let lastUpdateHitokoto = 0;
 
-export function updateHitokoto() {
+export function updateHitokoto(stateStore: ReturnType<typeof useStateStore>) {
   if (Date.now() - lastUpdateHitokoto < 5 * 1000) {
     return;
   }
@@ -8,7 +8,7 @@ export function updateHitokoto() {
   fetch("https://v1.hitokoto.cn?c=a&c=b&c=c&c=d&c=h&c=i&c=k")
     .then(async (response) => {
       let res = await response.json()
-      useStateStore().updateHitokoto(res.hitokoto, res.from_who ? res.from_who : res.from);
+      stateStore.updateHitokoto(res.hitokoto, res.from_who ? res.from_who : res.from);
     })
     .catch((error) => {
       console.error(error);

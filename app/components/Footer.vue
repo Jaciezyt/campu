@@ -2,7 +2,7 @@
 const state = useStateStore();
 
 // setInterval(updateHitokoto, 5 * 60 * 1000)
-updateHitokoto();
+updateHitokoto(state);
 
 const documentWidth = ref(0);
 onMounted(() => {
@@ -16,14 +16,16 @@ const copyright = `&copy; Jacie &nbsp;${new Date().getFullYear()}`;
   <div class="footer">
     <div class="footer-content">
       <slot name="default">
-        <UPopover mode="hover" :content="{ side: documentWidth <= 640 ? 'bottom' : 'right' }">
-          <span class="text-[16px]">
-            {{ state.hitokoto.hitokoto }}
-          </span>
-          <template #content>
-            <div class="px-3 py-2 text-sm">——{{ state.hitokoto.from }}</div>
-          </template>
-        </UPopover>
+        <ClientOnly>
+          <UPopover mode="hover" :content="{ side: documentWidth <= 640 ? 'bottom' : 'right' }">
+            <span class="text-[16px]">
+              {{ state.hitokoto.hitokoto }}
+            </span>
+            <template #content>
+              <div class="px-3 py-2 text-sm">——{{ state.hitokoto.from }}</div>
+            </template>
+          </UPopover>
+        </ClientOnly>
       </slot>
       <p class="h-4"></p>
       <slot name="copyright">
