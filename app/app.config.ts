@@ -1,12 +1,20 @@
 export default defineAppConfig({
+  ui: {
+    colors: {
+      primary: 'sky',
+      neutral: 'slate'
+    }
+  },
   siteMeta: {
-    name: "ZYT's Campu-site",
-    description: "ZYT's Campu-site",
+    name: "Jacie's 露营地",
+    description: "Jacie's Campsite",
     keywords: ["zyt", "jasonzyt", "jaciezyt", "jacie", "personal", "bio", "blog", "campu"],
+    defaultOgImage: "/assets/img/avatar.jpg",
+    twitterSite: "@Jaciezyt",
   },
   variables: {
     nav: {
-      title: "ZYT's Campu-site",
+      title: "Jacie's Campsite",
       avatar: "/assets/img/avatar.jpg",
       links: [
         { label: "Blog", icon: "i-my-feather", to: "/blog" },
@@ -15,7 +23,7 @@ export default defineAppConfig({
       ],
     },
     welcome: {
-      title: "Hi, ZYT here!",
+      title: "Hi, Jacie here!",
       quotes: ["Keep looking, don't settle.", "Do the right thing, and wait to be fired.", "個性捨てたら，死んでるのと一緒だよ"],
       backgrounds: [
         { path: "/assets/img/backgrounds/74922836_p0.jpg", props: ["horizontal", "dark"] },
@@ -41,7 +49,7 @@ export default defineAppConfig({
       displaySocials: ["GitHub", "Bilibili", "Twitter", "Telegram", "Discord", "Email"],
     },
     socials: [
-      { icon: "uil:github", website: "GitHub", user: "@Jasonzyt", url: "https://github.com/Jasonzyt" },
+      { icon: "uil:github", website: "GitHub", user: "@Jaciezyt", url: "https://github.com/Jaciezyt" },
       { icon: "my:bilibili-logo", website: "Bilibili", user: "@Jaciezyt", url: "https://space.bilibili.com/403482845" },
       { icon: "logos:twitter", website: "Twitter", user: "@Jaciezyt", url: "https://x.com/Jaiezyt" },
       { icon: "logos:telegram", website: "Telegram", user: "@Jaciezyt", url: "https://t.me/Jaciezyt" },
@@ -51,10 +59,4 @@ export default defineAppConfig({
       { icon: "my:email", website: "Email", user: "@jaciezyt", url: "mailto:jaciezyt@gmail.com" },
     ],
   },
-  ui: {
-    colors: {
-      primary: "sky",
-      neutral: "slate",
-    },
-  },
-});
+})
