@@ -2,20 +2,22 @@
 const { siteMeta } = useAppConfig();
 
 const route = useRoute();
-const title = route.meta.title ? `${route.meta.title} | ${siteMeta.name}` : siteMeta.name;
 const description = route.meta.description ? String(route.meta.description) : siteMeta.description;
 const ogImage = route.meta.ogImage ? route.meta.ogImage : siteMeta.defaultOgImage;
 
+let title = siteMeta.name;
+
 useHead({
-  title: title,
   meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
   link: [{ rel: "icon", href: "/favicon.ico" }],
   htmlAttrs: {
     lang: "en",
   },
+  titleTemplate(t) {
+    title = t ? `${t} - ${siteMeta.name}` : siteMeta.name;
+    return title;
+  },
 });
-
-route.meta.title;
 
 useSeoMeta({
   title,
