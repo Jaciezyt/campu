@@ -1,50 +1,71 @@
 <template>
-  <div class="cover" :style="{ backgroundImage: `url(${blog?.cover})` }"></div>
-  <div class="main">
-    <div class="relative p-5">
-      <h1 class="m-0 text-[2rem] text-white">{{ blog?.title }}</h1>
-      <div class="info mt-2 text-lg text-white">
-        <span class="date">
-          <Icon name="ic:sharp-access-time-filled" />
-          <time :datetime="blog?.created">{{
-            new Date(blog?.created ?? "").toLocaleDateString()
-          }}</time>
-        </span>
-        <span class="category">
-          <!-- TODO: link to category -->
-          <Icon name="ic:round-folder" />
-          <span>{{ blog?.category }}</span>
-        </span>
-        <span class="text-left min-w-10" v-if="false">
-          <Icon name="ic:round-local-fire-department" />
-          <!-- TODO: views -->
-          <span v-html="123"></span>
-        </span>
+  <div class="w-full flex relative">
+    <div class="background absolute" ref="bg"></div>
+    <div class="absolute h-[70vh] gradient"></div>
+    <div class="relative mt-[50vh] z-10 w-full max-w-225 mx-auto">
+      <div class="content md:rounded-[60px] px-8 pt-8 md:px-12 md:pt-12">
+        <div class="mb-6">
+          <h1 class="text-3xl font-bold">{{ blog?.title }}</h1>
+          <p class="text-muted flex items-center gap-12">
+            <span><NuxtTime :datetime="new Date(blog?.created!!)" /></span>
+            <span class="category">
+              <!-- TODO: link to category -->
+              <UIcon name="ic:round-folder" class="text-lg align-text-top mr-1" />
+              <span>{{ blog?.category }}</span>
+            </span>
+          </p>
+        </div>
+        <ContentRenderer v-if="blog" :value="blog" />
       </div>
-    </div>
-    <div class="article-body mt-14 px-2 text-[16px] md:px-8">
-      <ContentRenderer :value="blog!" />
-      <div class="mt-8 text-sm text-gray-600">
-        <p v-if="blog?.updated != blog?.created">
-          Updated at {{ new Date(blog?.updated ?? "").toLocaleDateString() }}
-        </p>
-      </div>
+      <div class="py-2 px-6 md:px-12 text-gray-500" v-if="blog?.updated && blog?.updated !== blog?.created">Updated at <NuxtTime :datetime="new Date(blog?.updated)" /></div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
+const { variables: vars } = useAppConfig();
+const bgRef = useTemplateRef("bg");
+const random = useState("random", () => Math.random());
+
 const { data: blog } = await useAsyncData(route.path, async () => {
   const res = await queryCollection("blog").path(route.path).first();
   if (!res) {
     throw createError({
       statusCode: 404,
-      statusMessage: "Not Found",
+      statusMessage: "Blog Not Found",
       fatal: true,
     });
   }
   return res;
+});
+
+useHead({
+  title: blog.value?.title,
+});
+useSeoMeta({
+  description: blog.value?.description,
+  ogDescription: blog.value?.description,
+  ogImage: blog.value?.cover,
+  twitterImage: blog.value?.cover,
+});
+
+onMounted(() => {
+  let cover = blog.value?.cover;
+
+  if (typeof cover !== "string" || cover.length === 0) {
+    // random background selection based on required props
+    let requiredProps = [];
+    requiredProps.push(document.documentElement.clientWidth > document.documentElement.clientHeight ? "horizontal" : "vertical");
+    requiredProps.push(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+    const matchedBackgrounds = vars.welcome.backgrounds.filter((background: any) => requiredProps.every((prop) => background.props.includes(prop)));
+
+    cover = matchedBackgrounds[Math.floor(random.value * matchedBackgrounds.length)]?.path || "";
+  }
+  if (bgRef.value) {
+    bgRef.value.style.backgroundImage = `url(${cover})`;
+  }
 });
 </script>
 
@@ -53,51 +74,24 @@ img {
   max-width: 100%;
 }
 
-.article-body h1 {
-  margin-top: 20px;
+.content h1 {
   font-weight: bold;
+  color: var(--ui-text);
 }
 
-.article-body h2,
-.article-body h3 {
-  margin-top: 10px;
+.content h2,
+.content h3 {
+  margin: 1rem 0;
   font-weight: bold;
+  color: var(--ui-text);
 }
 
-.article-body h1 a,
-.article-body h2 a,
-.article-body h3 a,
-.article-body h4 a,
-.article-body h5 a,
-.article-body h6 a {
-  font-weight: bold;
+.content * + h2 {
+  margin-top: 2rem;
 }
 
-.article-body p {
-  margin-bottom: 8px;
-}
-
-.article-body li p {
-  margin-bottom: 4px;
-}
-
-.article-body ul,
-.article-body ol {
-  margin-bottom: 10px;
-}
-
-.article-body a {
-  color: inherit;
-}
-
-.article-body p a {
-  color: rgb(var(--color-primary-500));
-  text-decoration: none;
-  transition: 0.5s color;
-}
-
-.article-body p a:hover {
-  color: rgb(var(--color-primary-700));
+.content p {
+  margin: 1rem 0;
 }
 
 code {
@@ -106,51 +100,22 @@ code {
 </style>
 
 <style scoped>
-.main {
-  padding: 375px 4rem 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.cover {
-  position: absolute;
-  width: 100%;
-  height: 500px;
-  background-position: center center;
+.background {
   background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
+  width: 100%;
+  height: 70vh;
+  z-index: 0;
 }
 
-.info span,
-.info time {
-  display: inline-block;
+.gradient {
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 90%, rgba(255, 255, 255, 1) 100%);
+  z-index: 1;
 }
 
-.info .iconify {
-  vertical-align: text-top;
-}
-
-.info .iconify + time,
-.info .iconify + span {
-  margin-left: 4px;
-}
-
-.info span + span {
-  margin-left: 1rem;
-}
-
-@media screen and (max-width: 768px) {
-  .cover {
-    height: 375px;
-  }
-
-  .main {
-    padding: 250px 20px 2rem;
-  }
-
-  .header h1 {
-    height: 4.8rem;
-    font-size: 1.5rem;
-  }
+.content {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 </style>
