@@ -1,8 +1,8 @@
 <template>
   <div class="img-container p-4">
     <NuxtImg
-      class="inline-block"
       ref="img"
+      class="inline-block"
       loading="lazy"
       :src="refinedSrc"
       :alt="props.alt"
@@ -10,10 +10,15 @@
       :height="props.height"
       @load="onImgLoaded"
     />
-    <br />
-    <p class="mt-4" v-if="props.alt">{{ props.alt }}</p>
+    <br>
+    <p
+      v-if="props.alt"
+      class="mt-4"
+    >
+      {{ props.alt }}
+    </p>
   </div>
-  <!-- TODO: view image-->
+  <!-- TODO: view image -->
 </template>
 
 <script setup lang="ts">
@@ -45,7 +50,7 @@ const props = defineProps({
 const refinedSrc = computed(() => {
   if (props.src?.startsWith("/") && !props.src.startsWith("//")) {
     const _base = withLeadingSlash(
-      withTrailingSlash(useRuntimeConfig().app.baseURL)
+      withTrailingSlash(useRuntimeConfig().app.baseURL),
     );
     if (_base !== "/" && !props.src.startsWith(_base)) {
       return joinURL(_base, props.src);

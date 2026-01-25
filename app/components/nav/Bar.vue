@@ -7,18 +7,46 @@
       @mouseover="handleMouseOver"
       @mouseleave="handleMouseLeave"
     >
-      <li class="inline-flex px-4 justify-center items-center cursor-pointer" index="logo" @click="$router.push('/')">
-        <UAvatar class="inline-block mr-4" size="md" :src="vars.nav.avatar" alt="avatar" />
+      <li
+        class="inline-flex px-4 justify-center items-center cursor-pointer"
+        index="logo"
+        @click="$router.push('/')"
+      >
+        <UAvatar
+          class="inline-block mr-4"
+          size="md"
+          :src="vars.nav.avatar"
+          alt="avatar"
+        />
         <Transition name="fade">
-          <NavBarTitle :show="itemShow || barPinned">{{ vars.nav.title }}</NavBarTitle>
+          <NavBarTitle :show="itemShow || barPinned">
+            {{ vars.nav.title }}
+          </NavBarTitle>
         </Transition>
       </li>
       <div class="grow" />
-      <Transition name="fade" v-for="item in items">
-        <NavBarItem :show="itemShow || barPinned" :key="item.label" :index="item.label" :to="item.to" :target="item.target ?? '_self'">
-          <Icon class="mr-2" :name="item.icon" />
+      <Transition
+        v-for="item in items"
+        :key="item.label"
+        name="fade"
+      >
+        <NavBarItem
+          :key="item.label"
+          :show="itemShow || barPinned"
+          :index="item.label"
+          :to="item.to"
+          :target="item.target ?? '_self'"
+        >
+          <Icon
+            class="mr-2"
+            :name="item.icon"
+          />
           {{ item.label }}
-          <Icon v-if="item.target === '_blank'" class="size-3.5 mb-1.5" name="i-lucide:arrow-up-right" />
+          <Icon
+            v-if="item.target === '_blank'"
+            class="size-3.5 mb-1.5"
+            name="i-lucide:arrow-up-right"
+          />
         </NavBarItem>
       </Transition>
     </ul>

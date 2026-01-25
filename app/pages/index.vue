@@ -1,23 +1,39 @@
 <template>
   <Welcome />
   <div class="main">
-    <section class="mb-8" id="pinned">
+    <section
+      id="pinned"
+      class="mb-8"
+    >
       <h2 class="mb-4 font-bold text-xl">
-        <Icon class="align-text-top" name="my:anchor" size="20px" />
+        <Icon
+          class="align-text-top"
+          name="my:anchor"
+          size="20px"
+        />
         Discovery
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <NuxtLink v-for="(blog, index) in pinnedBlogs" :to="blog.path">
+        <NuxtLink
+          v-for="(blog, index) in pinnedBlogs"
+          :key="index"
+          :to="blog.path"
+        >
           <div
             class="flex relative items-center h-52 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-500"
             @mouseenter="handleMouseEnter(index)"
             @mouseleave="handleMouseLeave(index)"
           >
-            <NuxtImg class="size-full object-cover transition-transform duration-500" :src="blog.cover" alt="cover" ref="pin-covers" />
+            <NuxtImg
+              ref="pin-covers"
+              class="size-full object-cover transition-transform duration-500"
+              :src="blog.cover"
+              alt="cover"
+            />
             <Transition name="fade">
               <div
-                class="absolute flex justify-center items-center text-center w-full h-24 p-4 bg-[rgba(0,0,0,0.6)] text-white text-xl font-medium font-sans"
                 v-show="pinnedShowTitles.at(index) ?? isTouch"
+                class="absolute flex justify-center items-center text-center w-full h-24 p-4 bg-[rgba(0,0,0,0.6)] text-white text-xl font-medium font-sans"
               >
                 {{ blog.title }}
               </div>

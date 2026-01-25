@@ -1,24 +1,74 @@
 <template>
   <div class="relative">
-    <div class="code-block font-mono flex" ref="block" @mouseenter="showButton = true" @mouseleave="showButton = false">
-      <div v-if="lineCount > 1" class="flex-none w-16 text-right text-md">
-        <div class="line-no pr-6 flex" :class="highlights.includes(i) ? 'highlight' : ''" v-for="i in lineCount" :key="i">
+    <div
+      ref="block"
+      class="code-block font-mono flex"
+      @mouseenter="showButton = true"
+      @mouseleave="showButton = false"
+    >
+      <div
+        v-if="lineCount > 1"
+        class="flex-none w-16 text-right text-md"
+      >
+        <div
+          v-for="i in lineCount"
+          :key="i"
+          class="line-no pr-6 flex"
+          :class="highlights.includes(i) ? 'highlight' : ''"
+        >
           <div class="line-mark flex-none w-[3px] h-[1.6rem]" />
           <span class="flex-1 pl-4">{{ i }}</span>
         </div>
       </div>
-      <pre v-if="lineCount == 1" ref="pre" class="px-0 pb-[0.8em] ml-6 flex-auto" :class="$props.class"><slot /></pre>
-      <pre v-else ref="pre" class="px-0 pb-[0.8em] m-0 flex-auto text-left overflow-x-auto myscroll" :class="$props.class"><slot /></pre>
+      <pre
+        v-if="lineCount == 1"
+        ref="pre"
+        class="px-0 pb-[0.8em] ml-6 flex-auto"
+        :class="$props.class"
+      ><slot /></pre>
+      <pre
+        v-else
+        ref="pre"
+        class="px-0 pb-[0.8em] m-0 flex-auto text-left overflow-x-auto myscroll"
+        :class="$props.class"
+      ><slot /></pre>
       <div class="info">
-        <UButton v-if="lineCount > 1" class="transition-all duration-200 ease-in-out" :class="showButton || showCheck ? 'opacity-100' : 'opacity-0'" variant="soft" color="neutral" size="lg" square @click="onClick" @mouseleave="onMouseLeave">
-          <Icon name="ic:round-content-copy" size="1.2rem" v-show="!showCheck" />
-          <Icon name="uil:check" size="1.2rem" style="color: #1a7f37" v-show="showCheck" />
+        <UButton
+          v-if="lineCount > 1"
+          class="transition-all duration-200 ease-in-out"
+          :class="showButton || showCheck ? 'opacity-100' : 'opacity-0'"
+          variant="soft"
+          color="neutral"
+          size="lg"
+          square
+          @click="onClick"
+          @mouseleave="onMouseLeave"
+        >
+          <Icon
+            v-show="!showCheck"
+            name="ic:round-content-copy"
+            size="1.2rem"
+          />
+          <Icon
+            v-show="showCheck"
+            name="uil:check"
+            size="1.2rem"
+            style="color: #1a7f37"
+          />
         </UButton>
         <Transition name="fade-in-1/4">
-          <span v-if="filename == null" v-show="!showButton || lineCount <= 1" class="lang">{{ language }}</span>
+          <span
+            v-if="filename == null"
+            v-show="!showButton || lineCount <= 1"
+            class="lang"
+          >{{ language }}</span>
         </Transition>
         <Transition name="fade-in-1/4">
-          <span v-if="filename != null" v-show="!showButton || lineCount <= 1" class="filename">{{ filename }}</span>
+          <span
+            v-if="filename != null"
+            v-show="!showButton || lineCount <= 1"
+            class="filename"
+          >{{ filename }}</span>
         </Transition>
       </div>
     </div>
@@ -144,5 +194,4 @@ onMounted(() => {
   width: fit-content;
   min-width: 100%;
 }
-
 </style>

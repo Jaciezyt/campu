@@ -7,7 +7,7 @@ export function updateHitokoto(stateStore: ReturnType<typeof useStateStore>) {
   lastUpdateHitokoto = Date.now();
   fetch("https://v1.hitokoto.cn?c=a&c=b&c=c&c=d&c=h&c=i&c=k")
     .then(async (response) => {
-      let res = await response.json()
+      const res = await response.json();
       stateStore.updateHitokoto(res.hitokoto, res.from_who ? res.from_who : res.from);
     })
     .catch((error) => {
@@ -20,17 +20,17 @@ export function randInt(min: number, max: number): number {
 }
 
 export type BlogCollectionItem = {
-  slug: string;
-  title: string;
-  description?: string;
-  cover?: string;
+  slug: string
+  title: string
+  description?: string
+  cover?: string
   author: {
-    name: string;
-    avatar?: string;
-  };
-  tags: string[];
-  category: string;
-  pinned?: number;
-  created: string;
-  updated: string;
+    name: string
+    avatar?: string
+  }
+  tags: string[]
+  category: string
+  pinned?: number
+  created: string
+  updated: string
 };

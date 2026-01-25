@@ -6,7 +6,7 @@ export const useStateStore = defineStore("state", {
     hitokoto: {
       hitokoto: "合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。",
       from: "《老子》",
-    }
+    },
   }),
   actions: {
     updateHitokoto(newHitokoto: string, newFrom: string) {
@@ -18,6 +18,6 @@ export const useStateStore = defineStore("state", {
     },
     unpinNavBar() {
       this.navBarPinned = false;
-    }
+    },
   },
 });

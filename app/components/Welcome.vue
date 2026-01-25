@@ -1,20 +1,39 @@
 <template>
-  <div class="background" ref="body">
+  <div
+    ref="body"
+    class="background"
+  >
     <div class="hello table-cell max-sm:hidden">
       <h1>{{ vars.welcome.title }}</h1>
       <div class="quote mx-auto my-6 px-5 pb-3 pt-5 text-2xl text-center select-none">
-        <Icon class="align-text-top" name="ic:round-format-quote" style="transform: rotate(180deg)" />
+        <Icon
+          class="align-text-top"
+          name="ic:round-format-quote"
+          style="transform: rotate(180deg)"
+        />
         <span>{{ quote }}</span>
-        <Icon class="align-text-top" name="ic:round-format-quote" />
-        <NavSocialBar class="mt-3 mb-2" size="1.5rem" />
+        <Icon
+          class="align-text-top"
+          name="ic:round-format-quote"
+        />
+        <NavSocialBar
+          class="mt-3 mb-2"
+          size="1.5rem"
+        />
       </div>
     </div>
     <div class="hello table-cell sm:hidden">
       <h2>{{ vars.welcome.title }}</h2>
     </div>
   </div>
-  <div class="chevron-down" @click="handleClickDown">
-    <Icon name="my:chevron-down" style="color: #fff" />
+  <div
+    class="chevron-down"
+    @click="handleClickDown"
+  >
+    <Icon
+      name="my:chevron-down"
+      style="color: #fff"
+    />
   </div>
 </template>
 
@@ -40,11 +59,13 @@ const quote = computed(() => {
 });
 
 onMounted(() => {
-  let requiredProps = [];
+  const requiredProps: string[] = [];
   requiredProps.push(document.documentElement.clientWidth > document.documentElement.clientHeight ? "horizontal" : "vertical");
   requiredProps.push(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
-  const matchedBackgrounds = vars.welcome.backgrounds.filter((background: any) => requiredProps.every((prop) => background.props.includes(prop)));
+  const matchedBackgrounds = vars.welcome.backgrounds.filter((background: { path: string, props: Array<string> }) =>
+    requiredProps.every(prop => background.props.includes(prop)),
+  );
 
   if (bodyRef.value) {
     const background = matchedBackgrounds[Math.floor(random.value * matchedBackgrounds.length)];

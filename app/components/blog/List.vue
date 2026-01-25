@@ -1,15 +1,22 @@
 <template>
-  <div class="grid gap-8" :class="`grid-cols-${columns}`">
-    <div v-for="(blog, index) in list" :key="blog.slug">
-      <BlogListItem :blog="blog" :cover-pos="index % 2 != 0 ? 'left' : 'right'" />
+  <div
+    class="grid gap-8"
+    :class="`grid-cols-${columns}`"
+  >
+    <div
+      v-for="(blog, index) in list"
+      :key="blog.slug"
+    >
+      <BlogListItem
+        :blog="blog"
+        :cover-pos="index % 2 != 0 ? 'left' : 'right'"
+      />
     </div>
   </div>
   <!-- TODO: Auto load more like gallery -->
 </template>
 
 <script lang="ts" setup>
-import type { BlogCollectionItem } from "~/utils";
-
 const props = defineProps({
   columns: {
     type: Number,

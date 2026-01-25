@@ -1,23 +1,39 @@
 <template>
   <div class="w-full flex relative">
-    <div class="background absolute" ref="bg"></div>
-    <div class="absolute h-[70vh] gradient"></div>
+    <div
+      ref="bg"
+      class="background absolute"
+    />
+    <div class="absolute h-[70vh] gradient" />
     <div class="relative mt-[50vh] z-10 w-full max-w-225 mx-auto">
       <div class="content md:rounded-[60px] px-8 pt-8 md:px-12 md:pt-12">
         <div class="mb-6">
-          <h1 class="text-3xl font-bold">{{ blog?.title }}</h1>
+          <h1 class="text-3xl font-bold">
+            {{ blog?.title }}
+          </h1>
           <p class="text-muted flex items-center gap-12">
             <span><NuxtTime :datetime="new Date(blog?.created!!)" /></span>
             <span class="category">
               <!-- TODO: link to category -->
-              <UIcon name="ic:round-folder" class="text-lg align-text-top mr-1" />
+              <UIcon
+                name="ic:round-folder"
+                class="text-lg align-text-top mr-1"
+              />
               <span>{{ blog?.category }}</span>
             </span>
           </p>
         </div>
-        <ContentRenderer v-if="blog" :value="blog" />
+        <ContentRenderer
+          v-if="blog"
+          :value="blog"
+        />
       </div>
-      <div class="py-2 px-6 md:px-12 text-gray-500" v-if="blog?.updated && blog?.updated !== blog?.created">Updated at <NuxtTime :datetime="new Date(blog?.updated)" /></div>
+      <div
+        v-if="blog?.updated && blog?.updated !== blog?.created"
+        class="py-2 px-6 md:px-12 text-gray-500"
+      >
+        Updated at <NuxtTime :datetime="new Date(blog?.updated)" />
+      </div>
     </div>
   </div>
 </template>
@@ -55,11 +71,13 @@ onMounted(() => {
 
   if (typeof cover !== "string" || cover.length === 0) {
     // random background selection based on required props
-    let requiredProps = [];
+    const requiredProps: string[] = [];
     requiredProps.push(document.documentElement.clientWidth > document.documentElement.clientHeight ? "horizontal" : "vertical");
     requiredProps.push(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
-    const matchedBackgrounds = vars.welcome.backgrounds.filter((background: any) => requiredProps.every((prop) => background.props.includes(prop)));
+    const matchedBackgrounds = vars.welcome.backgrounds.filter((background: { path: string, props: Array<string> }) =>
+      requiredProps.every(prop => background.props.includes(prop)),
+    );
 
     cover = matchedBackgrounds[Math.floor(random.value * matchedBackgrounds.length)]?.path || "";
   }

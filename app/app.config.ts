@@ -1,9 +1,9 @@
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: 'sky',
-      neutral: 'slate'
-    }
+      primary: "sky",
+      neutral: "slate",
+    },
   },
   siteMeta: {
     name: "Jacie's 露营地",
@@ -59,4 +59,4 @@ export default defineAppConfig({
       { icon: "my:email", website: "Email", user: "@jaciezyt", url: "mailto:jaciezyt@gmail.com" },
     ],
   },
-})
+});

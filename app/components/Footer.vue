@@ -17,28 +17,47 @@ const copyright = `&copy; Jacie &nbsp;${new Date().getFullYear()}`;
     <div class="footer-content">
       <slot name="default">
         <ClientOnly>
-          <UPopover mode="hover" :content="{ side: documentWidth <= 640 ? 'bottom' : 'right' }">
+          <UPopover
+            mode="hover"
+            :content="{ side: documentWidth <= 640 ? 'bottom' : 'right' }"
+          >
             <span class="text-[16px]">
               {{ state.hitokoto.hitokoto }}
             </span>
             <template #content>
-              <div class="px-3 py-2 text-sm">——{{ state.hitokoto.from }}</div>
+              <div class="px-3 py-2 text-sm">
+                ——{{ state.hitokoto.from }}
+              </div>
             </template>
           </UPopover>
         </ClientOnly>
       </slot>
-      <p class="h-4"></p>
+      <p class="h-4" />
       <slot name="copyright">
-        <p v-html="copyright"></p>
+        <p v-html="copyright" />
       </slot>
       <p class="powered-by">
         Powered by
-        <a href="https://github.com/Jaciezyt/campu" class="campu">
-          <Icon name="my:campu-logo" size="0.8em" style="color: var(--ui-text-toned)" />
+        <a
+          href="https://github.com/Jaciezyt/campu"
+          class="campu"
+        >
+          <Icon
+            name="my:campu-logo"
+            size="0.8em"
+            style="color: var(--ui-text-toned)"
+          />
         </a>
         with
-        <a href="https://nuxt.com/" class="nuxt">
-          <Icon name="my:nuxt-logo" size="0.8em" style="color: var(--ui-text-toned)" />
+        <a
+          href="https://nuxt.com/"
+          class="nuxt"
+        >
+          <Icon
+            name="my:nuxt-logo"
+            size="0.8em"
+            style="color: var(--ui-text-toned)"
+          />
         </a>
       </p>
     </div>

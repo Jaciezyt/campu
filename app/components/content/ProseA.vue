@@ -1,5 +1,9 @@
 <template>
-  <NuxtLink class="link" :href="props.href" :target="props.target">
+  <NuxtLink
+    class="link"
+    :href="props.href"
+    :target="props.target"
+  >
     <slot />
   </NuxtLink>
 </template>

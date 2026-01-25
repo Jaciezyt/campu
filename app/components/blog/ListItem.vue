@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import type { BlogCollectionItem } from "~/utils";
 
-const props = defineProps<{
-  blog: BlogCollectionItem;
-  coverPos: "left" | "right";
+defineProps<{
+  blog: BlogCollectionItem
+  coverPos: "left" | "right"
 }>();
 
 const displayViews = ref("-");
@@ -11,11 +11,21 @@ const displayViews = ref("-");
 </script>
 
 <template>
-  <UCard class="transition-shadow hover:shadow-lg duration-300" :ui="{ body: 'p-0 sm:p-0' }">
-    <div class="flex max-md:hidden" :class="coverPos == 'right' ? 'flex-row-reverse' : 'flex-row'">
+  <UCard
+    class="transition-shadow hover:shadow-lg duration-300"
+    :ui="{ body: 'p-0 sm:p-0' }"
+  >
+    <div
+      class="flex max-md:hidden"
+      :class="coverPos == 'right' ? 'flex-row-reverse' : 'flex-row'"
+    >
       <div class="cover">
         <NuxtLink :to="`/blog/${blog.slug}`">
-          <NuxtImg :src="blog.cover" alt="cover" loading="lazy" />
+          <NuxtImg
+            :src="blog.cover"
+            alt="cover"
+            loading="lazy"
+          />
         </NuxtLink>
       </div>
       <div class="content">
@@ -26,7 +36,10 @@ const displayViews = ref("-");
                 <h1 dir="ltr">{{ blog.title }}</h1>
               </NuxtLink>
             </div>
-            <div class="info" dir="ltr">
+            <div
+              class="info"
+              dir="ltr"
+            >
               <span class="date">
                 <Icon name="ic:sharp-access-time-filled" />
                 <time :datetime="blog.created">
@@ -37,20 +50,30 @@ const displayViews = ref("-");
                 <Icon name="ic:round-folder" />
                 <span>{{ blog.category }}</span>
               </span>
-              <span class="views" v-if="false"
-                ><!-- TODO: backend -->
+              <span
+                v-if="false"
+                class="views"
+              ><!-- TODO: backend -->
                 <Icon name="ic:round-local-fire-department" />
-                <span v-html="displayViews"></span>
+                <span v-html="displayViews" />
               </span>
             </div>
           </div>
-          <div class="preview" dir="ltr">
-            <p dir="ltr">{{ blog.description }}</p>
+          <div
+            class="preview"
+            dir="ltr"
+          >
+            <p dir="ltr">
+              {{ blog.description }}
+            </p>
           </div>
         </div>
         <div class="more-btn">
           <NuxtLink :to="`/blog/${blog.slug}`">
-            <Icon name="ic:round-more-horiz" size="30px" />
+            <Icon
+              name="ic:round-more-horiz"
+              size="30px"
+            />
           </NuxtLink>
         </div>
       </div>
@@ -58,7 +81,12 @@ const displayViews = ref("-");
     <div class="md:hidden">
       <div class="w-full h-36 overflow-hidden">
         <NuxtLink :to="`/blog/${blog.slug}`">
-          <NuxtImg class="size-full object-cover" :src="blog.cover" alt="cover" loading="lazy" />
+          <NuxtImg
+            class="size-full object-cover"
+            :src="blog.cover"
+            alt="cover"
+            loading="lazy"
+          />
         </NuxtLink>
       </div>
       <div class="px-4 pt-4">
@@ -69,19 +97,30 @@ const displayViews = ref("-");
         </div>
         <div class="py-2 text-gray-600 text-[16px]">
           <span>
-            <Icon name="ic:sharp-access-time-filled" class="text-sm mr-0.5" />
+            <Icon
+              name="ic:sharp-access-time-filled"
+              class="text-sm mr-0.5"
+            />
             <time :datetime="blog.created">
               {{ new Date(blog.created ?? "").toLocaleDateString() }}
             </time>
           </span>
           <span class="ml-1">
-            <Icon name="ic:round-folder" class="text-sm mr-0.5" />
+            <Icon
+              name="ic:round-folder"
+              class="text-sm mr-0.5"
+            />
             <span>{{ blog.category }}</span>
           </span>
-          <span class="ml-1" v-if="false"
-            ><!-- TODO: backend -->
-            <Icon name="ic:round-local-fire-department" class="text-sm mr-0.5" />
-            <span v-html="displayViews"></span>
+          <span
+            v-if="false"
+            class="ml-1"
+          ><!-- TODO: backend -->
+            <Icon
+              name="ic:round-local-fire-department"
+              class="text-sm mr-0.5"
+            />
+            <span v-html="displayViews" />
           </span>
         </div>
       </div>
@@ -90,7 +129,10 @@ const displayViews = ref("-");
       </div>
       <div class="px-4 py-0">
         <NuxtLink :to="`/blog/${blog.slug}`">
-          <Icon name="ic:round-more-horiz" size="30px" />
+          <Icon
+            name="ic:round-more-horiz"
+            size="30px"
+          />
         </NuxtLink>
       </div>
     </div>
