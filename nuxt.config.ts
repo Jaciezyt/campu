@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/hints",
     "@nuxt/image",
+    "nuxt-studio",
     "@pinia/nuxt",
   ],
 
@@ -90,5 +91,14 @@ export default defineNuxtConfig({
       prefix: "my",
       dir: "./app/assets/icon",
     }],
+  },
+
+  studio: {
+    repository: {
+      provider: "github", // 'github' or 'gitlab'
+      owner: "Jaciezyt",
+      repo: "campu",
+      branch: "main",
+    },
   },
 });
