@@ -55,7 +55,7 @@
             喜欢各种交通工具, 尤其是飞机✈️和火车🚅!! <del>立志拍到全天下的所有飞机和火车</del><br>
             你可以在<NuxtLink
               class="link"
-              to="/gallery"
+              to="https://gallery.zzzz.yt"
             >Gallery</NuxtLink>看到我的作品! 谢谢你的喜欢! <br>
             我也研究业余无线电! 只有几台 UV 段的手台, 呼号<code>BH6SLW</code>, 目前活跃于 FM 卫星<br>
             摇曳露营△大好き, 有一套露营装备, 冬天应该会去露营, <del>夏天野外的虫子太可怕了</del><br>
@@ -480,5 +480,18 @@ h3 {
 
 .content {
   background-color: rgba(255, 255, 255, 0.9);
+}
+
+@media (prefers-color-scheme: dark) {
+  .cover {
+    background-image: url("/assets/img/backgrounds/109884134_p2.jpg");
+  }
+  .gradient {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%, var(--ui-bg) 100%);
+  }
+  .content {
+    background-color: oklch(from var(--ui-bg) l c h / 0.7);
+    color: var(--ui-text);
+  }
 }
 </style>

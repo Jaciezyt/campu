@@ -76,15 +76,6 @@ export default defineNuxtConfig({
 
   compatibilityDate: "2025-01-15",
 
-  eslint: {
-    config: {
-      stylistic: {
-        commaDangle: "never",
-        braceStyle: "1tbs",
-      },
-    },
-  },
-
   icon: {
     customCollections: [{
       prefix: "my",

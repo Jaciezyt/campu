@@ -136,4 +136,14 @@ code {
 .content {
   background-color: rgba(255, 255, 255, 0.9);
 }
+
+@media (prefers-color-scheme: dark) {
+  .gradient {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%, var(--ui-bg) 100%);
+  }
+  .content {
+    background-color: oklch(from var(--ui-bg) l c h / 0.7);
+    color: var(--ui-text);
+  }
+}
 </style>
