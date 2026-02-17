@@ -11,7 +11,9 @@
           name="ic:round-format-quote"
           style="transform: rotate(180deg)"
         />
-        <span>{{ quote }}</span>
+        <ClientOnly>
+          <span>{{ quote }}</span>
+        </ClientOnly>
         <Icon
           class="align-text-top"
           name="ic:round-format-quote"
@@ -39,7 +41,6 @@
 
 <script setup lang="ts">
 const { variables: vars } = useAppConfig();
-const random = useState("random", () => Math.random());
 
 const handleClickDown = () => {
   window.scrollTo({
@@ -53,7 +54,7 @@ const bodyRef = useTemplateRef("body");
 const quote = computed(() => {
   const quotes = vars.welcome.quotes;
   if (quotes && quotes.length > 0) {
-    return quotes[Math.floor(random.value * quotes.length)];
+    return quotes[Math.floor(Math.random() * quotes.length)];
   }
   return "Welcome to our site!";
 });
@@ -68,7 +69,7 @@ onMounted(() => {
   );
 
   if (bodyRef.value) {
-    const background = matchedBackgrounds[Math.floor(random.value * matchedBackgrounds.length)];
+    const background = matchedBackgrounds[Math.floor(Math.random() * matchedBackgrounds.length)];
     bodyRef.value.style.backgroundImage = `url(${background?.path})`;
   }
 });
