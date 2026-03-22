@@ -312,16 +312,16 @@ const languageList = [
 
 const gameList = [
   {
+    name: "星露谷物语",
+    server: "Stardew Valley",
+  },
+  {
     name: "Minecraft",
     server: "Java/BE",
   },
   {
     name: "灵魂摆渡人",
     server: "Spiritfarer",
-  },
-  {
-    name: "雨中冒险",
-    server: "2",
   },
   {
     name: "微软模飞",
