@@ -51,7 +51,7 @@ export default defineAppConfig({
     socials: [
       { icon: "uil:github", website: "GitHub", user: "@Jaciezyt", url: "https://github.com/Jaciezyt" },
       { icon: "my:bilibili-logo", website: "Bilibili", user: "@Jaciezyt", url: "https://space.bilibili.com/403482845" },
-      { icon: "logos:twitter", website: "Twitter", user: "@Jaciezyt", url: "https://x.com/Jaiezyt" },
+      { icon: "logos:twitter", website: "Twitter", user: "@Jaciezyt", url: "https://x.com/Jaciezyt" },
       { icon: "logos:telegram", website: "Telegram", user: "@Jaciezyt", url: "https://t.me/Jaciezyt" },
       { icon: "logos:discord-icon", website: "Discord", user: "@jaciezyt", url: "https://discord.com" },
       { icon: "my:steam-logo", website: "Steam", user: "@jaciezyt", url: "https://steamcommunity.com/id/jaciezyt" },
