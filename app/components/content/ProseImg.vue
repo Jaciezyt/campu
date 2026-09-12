@@ -63,7 +63,7 @@ const imgRef = useTemplateRef("img");
 const imgActualWidth = ref("100%");
 
 const onImgLoaded = () => {
-  imgActualWidth.value = imgRef?.value?.$el?.clientWidth + "px";
+  imgActualWidth.value = imgRef.value?.imgEl?.clientWidth + "px";
 };
 </script>
 

@@ -59,7 +59,7 @@ const handleMouseEnter = (index: number) => {
     return;
   }
   if (pinCovers.value) {
-    pinCovers.value[index]?.$el?.classList.add("scale-125");
+    pinCovers.value[index]?.imgEl?.classList.add("scale-125");
   }
   pinnedShowTitles.value[index] = true;
 };
@@ -69,7 +69,7 @@ const handleMouseLeave = (index: number) => {
     return;
   }
   if (pinCovers.value) {
-    pinCovers.value[index]?.$el?.classList.remove("scale-125");
+    pinCovers.value[index]?.imgEl?.classList.remove("scale-125");
   }
   pinnedShowTitles.value[index] = false;
 };
