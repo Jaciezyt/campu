@@ -20,6 +20,7 @@
 defineProps({
   size: {
     type: String,
+    default: "1em",
   },
 });
 

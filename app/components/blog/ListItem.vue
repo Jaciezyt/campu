@@ -55,7 +55,7 @@ const displayViews = ref("-");
                 class="views"
               ><!-- TODO: backend -->
                 <Icon name="ic:round-local-fire-department" />
-                <span v-html="displayViews" />
+                <span>{{ displayViews }}</span>
               </span>
             </div>
           </div>
@@ -120,7 +120,7 @@ const displayViews = ref("-");
               name="ic:round-local-fire-department"
               class="text-sm mr-0.5"
             />
-            <span v-html="displayViews" />
+            <span>{{ displayViews }}</span>
           </span>
         </div>
       </div>

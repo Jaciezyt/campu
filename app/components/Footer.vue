@@ -9,7 +9,7 @@ onMounted(() => {
   documentWidth.value = document.documentElement.clientWidth;
 });
 
-const copyright = `&copy; Jacie &nbsp;${new Date().getFullYear()}`;
+const year = new Date().getFullYear();
 </script>
 
 <template>
@@ -34,7 +34,7 @@ const copyright = `&copy; Jacie &nbsp;${new Date().getFullYear()}`;
       </slot>
       <p class="h-4" />
       <slot name="copyright">
-        <p v-html="copyright" />
+        <p>&copy; Jacie &nbsp;{{ year }}</p>
       </slot>
       <p class="powered-by">
         Powered by

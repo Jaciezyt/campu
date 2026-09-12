@@ -20,8 +20,14 @@
 <script lang="ts" setup>
 defineProps({
   show: Boolean,
-  index: String,
-  to: String,
+  index: {
+    type: String,
+    required: true,
+  },
+  to: {
+    type: String,
+    required: true,
+  },
   target: {
     type: String,
     default: "_self",
