@@ -1,9 +1,14 @@
+packages:
+  - "."
+
 supportedArchitectures:
   os:
     - linux
     - current
   cpu:
+    - current
     - x64
+    - arm64
 
 ignoredBuiltDependencies:
   - "@parcel/watcher"
