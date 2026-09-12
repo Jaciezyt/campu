@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
-    "eslint": "^9.39.2",
-    "typescript": "^5.9.3",
+    "eslint": "^10.10.0",
+    "typescript": "^6.0.3",
     "vue-tsc": "^3.3.11"
   },
   "packageManager": "pnpm@10.26.1"
