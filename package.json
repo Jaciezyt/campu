@@ -11,8 +11,11 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@iconify-json/logos": "^1.2.14",
     "@iconify-json/lucide": "^1.2.131",
     "@iconify-json/simple-icons": "^1.2.95",
+    "@iconify-json/uil": "^1.2.3",
+    "@iconify-json/vscode-icons": "^1.2.77",
     "@nuxt/content": "^3.16.0",
     "@nuxt/hints": "1.1.4",
     "@nuxt/image": "^2.1.0",
