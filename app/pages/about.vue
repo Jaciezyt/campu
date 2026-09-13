@@ -69,13 +69,8 @@
                   <UCard class="hover:shadow-lg transition-shadow" :ui="{ body: 'p-4 sm:p-4' }">
                     <div class="grid grid-cols-3 gap-4">
                       <div class="col-span-1">
-                        <UIcon
-                          :name="social.icon"
-                          style="color: var(--ui-text)"
-                          mode="svg"
-                          width="100%"
-                          height="100%"
-                        />
+                        <UIcon :name="social.icon" style="color: var(--ui-text)" mode="svg" width="100%"
+                          height="100%" />
                       </div>
                       <div class="col-span-2">
                         <h3 class="text-lg">{{ social.website }}</h3>
@@ -306,7 +301,7 @@ const projectList = [
     name: "Focalia",
     url: "https://focalia.app/",
     lang: "Vue / Rust",
-    desc: "AI-powered one-stop photography portfolio management app",
+    desc: "AI-powered one-stop photo portfolio management app",
   },
   {
     owner: "LiteLDev",
@@ -315,13 +310,13 @@ const projectList = [
     lang: "C++",
     desc: "Versatile mod loader for MCBE",
   },
-  {
-    owner: "LiteLDev",
-    name: "HeaderOutput",
-    url: "https://github.com/LiteLDev/HeaderOutput",
-    lang: "Kotlin",
-    desc: "BDS headers generator",
-  },
+  // {
+  //   owner: "LiteLDev",
+  //   name: "HeaderOutput",
+  //   url: "https://github.com/LiteLDev/HeaderOutput",
+  //   lang: "Kotlin",
+  //   desc: "BDS headers generator",
+  // },
   {
     owner: "Jaciezyt",
     name: "campu",
@@ -335,13 +330,6 @@ const projectList = [
     url: "https://github.com/Jaciezyt/kana-loop",
     lang: "Nuxt",
     desc: "Japanese Kana learning web app",
-  },
-  {
-    owner: "Jaciezyt",
-    name: "gallery",
-    url: "https://github.com/Jaciezyt/gallery",
-    lang: "Nuxt",
-    desc: "Gallery web app for my photos",
   },
   {
     owner: "Jaciezyt",
