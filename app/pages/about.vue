@@ -36,7 +36,7 @@
             class="mt-3 text-[16px]"
           >
             非常感谢你能来到我的营地⛺玩—— Orz<br>
-            我是 Jacie (曾用名 Jason), 也可以叫我 ZYT , {{ age.year }}岁, 来自武汉! 现在是高中牲😢 <del>(即将过期JK)</del><br>
+            我是 Jacie, 也可以叫我 ZYT, {{ age.year }}岁, 来自武汉! 现在是大学牲 <del>(过期JK)</del><br>
             写代码👨‍💻是爱好, 初一自学 C++, 曾经打过几年 OI, <del>也算是蒟蒻 OIer 吧</del><br>
             曾经为<NuxtLink
               class="link"
@@ -50,21 +50,18 @@
               class="link"
               to="https://github.com/LiteLDev"
             >LeviMC</NuxtLink>的一份子! <br>
-            离开 BDS 圈子后, 开始学习 App 的开发, <del>勉强算半个 Full-stack 吧</del><br>
-            除写码之外, 我也很喜欢拍照📷~ 是风光佬, 偶尔拍人文<br>
+            离开 BDS 圈子后, 开始学习 App 的开发, 勉强算半个 Full-stack 吧! <br>
+            除写码之外, 我也很喜欢旅行和拍照📷~ 主要使用 Sony α6400 和 DJI Pocket 4 进行创作<br>
             喜欢各种交通工具, 尤其是飞机✈️和火车🚅!! <del>立志拍到全天下的所有飞机和火车</del><br>
-            你可以在<NuxtLink
-              class="link"
-              to="https://gallery.zzzz.yt"
-            >Gallery</NuxtLink>看到我的作品! 谢谢你的喜欢! <br>
+            我正在开发面向摄影师/爱好者的 AI 驱动一站式作品管理解决方案 — Focalia <del>(欢迎参加内测)</del><br>
             我也研究业余无线电! 只有几台 UV 段的手台, 呼号<code>BH6SLW</code>, 目前活跃于 FM 卫星<br>
             摇曳露营△大好き, 有一套露营装备, 冬天应该会去露营, <del>夏天野外的虫子太可怕了</del><br>
-            有时候会打电动, 不是很擅长 FPS 游戏, 想和我玩的话只要有空随时可以!<br>
+            有时候会打电动, 不太擅长 FPS 游戏, 喜欢更 Chill 的游戏捏~ 想和我一起玩的话也可以!<br>
             喜欢看动画, <del>百合什么的最喜欢啦</del><br>
             可以用中文/English与我交流, 日语还在自学ing...<br>
             我对所有人都很友好! 不会主动与别人产生冲突<br>
             <br>
-            <span class="spoiler">⚠️ 拒绝讨论政治, 反感魔怔人和药物滥用, 不混任何形式的圈子!! </span><br>
+            <span class="spoiler">⚠️ 不喜欢讨论政治, 反感魔怔人和药物滥用, 不混圈子 </span><br>
           </p>
           <br>
           <div
@@ -370,6 +367,13 @@ const experienceList = [
 ];
 
 const projectList = [
+  {
+    owner: "Jaciezyt",
+    name: "Focalia",
+    url: "https://focalia.app/",
+    lang: "Vue / Rust",
+    desc: "AI-powered one-stop photography portfolio management app",
+  },
   {
     owner: "LiteLDev",
     name: "LeviLamina",

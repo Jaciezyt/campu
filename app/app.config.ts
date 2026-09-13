@@ -18,8 +18,7 @@ export default defineAppConfig({
       avatar: "/assets/img/avatar.jpg",
       links: [
         { label: "Blog", icon: "i-my-feather", to: "/blog" },
-        { label: "About", icon: "i-my-user", to: "/about" },
-        { label: "Gallery", icon: "i-my-photo", to: "https://gallery.zzzz.yt", target: "_blank" },
+        { label: "About", icon: "i-my-user", to: "/about", target: "_self" },
       ],
     },
     welcome: {
